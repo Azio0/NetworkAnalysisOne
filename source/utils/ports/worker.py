@@ -25,3 +25,26 @@ def QueryPort(IP, port):
 
     except Exception as error:
         return f"[QueryPorts] {error}", 500
+
+def QueryPing(IP, port, timeout):
+    try:
+        if IP is None:
+            raise Exception("No IP address provided")
+        
+        if port is None:
+            raise Exception("No port number provided")
+        
+        if timeout is None:
+            timeout = 1
+        
+        ip = socket.gethostbyname(IP)
+
+        try:
+            with socket.create_connection((ip, port), timeout=timeout):
+                return "Ping Success", 200
+            
+        except socket.timeout:
+            raise Exception("Ping failed")
+    
+    except Exception as error:
+        return f"[Ping] Error: {error}", 500

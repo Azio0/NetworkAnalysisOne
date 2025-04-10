@@ -6,6 +6,21 @@ from utils.ports.worker import *
 
 class NetworkAnalysisOne():
     class ports():
+        def Ping(IP, port=80, timeout=1):
+            try:
+                if IP == None:
+                    raise Exception("No IP address provided")
+                
+                response, status = QueryPing(IP, port, timeout)
+                
+                if status != 200:
+                    raise Exception(response)
+                
+                return response, 200
+            
+            except Exception as error:
+                return f"[NetworkAnalysisOne] [Ping] Error: {error}", 500
+
         def CheckPort(IP, port):
             try:
                 if IP == None:
