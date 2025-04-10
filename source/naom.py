@@ -2,8 +2,27 @@ from utils.config.worker import *
 from utils.requests.worker import *
 from utils.vpnapi.worker import *
 from utils.tracert.worker import *
+from utils.ports.worker import *
 
 class NetworkAnalysisOne():
+    class ports():
+        def CheckPort(IP, port):
+            try:
+                if IP == None:
+                    raise Exception("No IP address provided")
+                
+                if port == None:
+                    raise Exception("No port number provided")
+
+                response, status = QueryPort(IP, port)
+
+                if status != 200:
+                    raise Exception(response)
+                
+                return response, 200
+
+            except Exception as error:
+                return f"[NetworkAnalysisOne] [CheckPort] Error: {error}", 500
     class tracert():
         def Trace(IP):
             try:
