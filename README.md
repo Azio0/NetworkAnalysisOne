@@ -38,7 +38,7 @@ To unlock NAOM's full potential, it is recommended to create a free account with
 ## How It Works
 
 NetworkAnalysisOne uses the following components:
-- **configuration**: Reads configuration settings from a YAML file.
+- **Configuration**: Reads configuration settings from a YAML file.
 - **VPNAPI**: Returns more in deph information about the network type.
 - **Requests**: To return data from the VpnAPI service.
 - **Ports**: Used for pinging and scanning open ports.
@@ -89,7 +89,7 @@ Parses through a json dataset to return the `security` information (Tor, Proxy e
 
 - **Parent**: `vpnAPI` (class) - The class this method belongs to.
 - **Parameters**: `data` (The data set returned from LookupIP) - The network's information.
-- **Returns**: A data set containing the IP's information and status code.
+- **Returns**: A data set containing the network type and status code.
 
 #### `CheckLocation(data)`
 
